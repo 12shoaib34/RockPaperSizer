@@ -1,4 +1,5 @@
 import React from 'react'
+import LottieView from 'lottie-react-native';
 
 import {
   View,
@@ -17,6 +18,7 @@ const Menu = () =>{
             <Text style={styles.Header}>
                 Rock Peaper Seazer
             </Text>
+            {/* <LottieView source={require('../../animations/23721-paper-plane.json')} autoPlay loop /> */}
             <View style={styles.MainBox}>
                 <View style={styles.Pictures}>
                     <Image style={{height:"100%", width:"100%"}} source={require('../../assets/bt1.jpg')}/>
@@ -37,7 +39,7 @@ const Menu = () =>{
     </ScrollView>
   )
 }
-const windowWidth = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
  const styles = StyleSheet.create({
@@ -45,7 +47,7 @@ const windowHeight = Dimensions.get('window').height;
   MainMenu:{
     height:windowHeight,
     width:windowWidth,
-    backgroundColor:"#655356",
+    backgroundColor:"#280F28",
     alignItems:"center",
     // justifyContent:"center",
   },
@@ -53,7 +55,7 @@ const windowHeight = Dimensions.get('window').height;
   Header:{
     fontSize:30,
     marginTop:30,
-    fontFamily:"serif",
+    color:"#0077b6",
   },
   
   Pictures:{
@@ -76,7 +78,7 @@ const windowHeight = Dimensions.get('window').height;
   StartBtn:{
     height:50,
     width:100,
-    backgroundColor:"orange",
+    backgroundColor:"#0077b6",
     marginBottom:30,
     justifyContent:"center",
     alignItems:"center",
