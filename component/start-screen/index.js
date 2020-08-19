@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import LottieView from 'lottie-react-native';
+
 
 import {
   View,
@@ -8,19 +9,21 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  Button
 } from 'react-native'
 
-const Menu = () =>{
+const Menu = (prop) =>{
+
   return(
     <ScrollView>
         <View style={styles.MainMenu}>
             <Text style={styles.Header}>
                 Rock Peaper Seazer
             </Text>
-            {/* <LottieView source={require('../../animations/23721-paper-plane.json')} autoPlay loop /> */}
+            <LottieView source={require('../../animations/23721-paper-plane.json')} autoPlay loop />
             <View style={styles.MainBox}>
-                <View style={styles.Pictures}>
+                {/* <View style={styles.Pictures}>
                     <Image style={{height:"100%", width:"100%"}} source={require('../../assets/bt1.jpg')}/>
                 </View>
                 <View style={styles.Pictures}>
@@ -28,9 +31,9 @@ const Menu = () =>{
                 </View>
                 <View style={styles.Pictures}>
                     <Image style={{height:"100%", width:"100%"}} source={require('../../assets/bt3.jpg')}/>
-                </View>
+                </View> */}
             </View>
-            <TouchableOpacity style={styles.StartBtn}>
+            <TouchableOpacity onPress={()=>{prop.Changer()}} style={styles.StartBtn}>
                 <Text Style={styles.StartGame}>
                 Start Game
                 </Text>
@@ -77,7 +80,7 @@ const windowHeight = Dimensions.get('window').height;
 
   StartBtn:{
     height:50,
-    width:100,
+    width:150,
     backgroundColor:"#0077b6",
     marginBottom:30,
     justifyContent:"center",

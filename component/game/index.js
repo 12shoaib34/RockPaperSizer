@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import LottieView from 'lottie-react-native';
 
 import {
   View,
@@ -15,7 +16,7 @@ function random (list) {
   return list[Math.floor((Math.random()*list.length))];
 }
 
-const Game = () =>{
+const Game = (prop) =>{
   const [you, setYou] = useState(null)
   const [com, setCom] = useState(null)
 
@@ -121,7 +122,7 @@ const Game = () =>{
       return require('../../assets/bt2.jpg')
     }
     if(x == 2){
-      return require('../../assets/bt2.jpg')
+      return require('../../assets/bt3.jpg')
     }
   } 
   useEffect(()=>{
@@ -131,14 +132,19 @@ const Game = () =>{
     <ScrollView>
         <View style={styles.MainBox}>
             <View style={styles.BotSection}>
+            <View style={styles.BackBtnBox}>
+             <TouchableOpacity onPress={()=>{prop.backBtn()}}style={styles.BackBtn}>
+            <Image style={{height:"70%", width:"70%"}} source={require('../../assets/b.png')}/>
+            </TouchableOpacity> 
+          </View>
               <Text style={styles.Text}>Computer</Text>
               <View style={styles.Bot}>
                 <Image style={{height:"100%", width:"100%"}} source={com}/>
               </View>
             </View>
-            {/* <View style={styles.ResultBox}>
-              <Text style={styles.ResultText}>You Won!</Text>
-            </View> */}
+            <View style={styles.AnimationBox}>
+              <LottieView source={require('../../animations/23721-paper-plane.json')} autoPlay loop />
+            </View>
             <View style={styles.PlayerBox}>
               <Text style={styles.Text}>You</Text>
               <View style={styles.Bot}>
@@ -186,11 +192,24 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     paddingVertical:10,
     backgroundColor:"#280F28",
-    justifyContent:'space-between'
+    // justifyContent:'space-between'
+  },
+
+  BackBtnBox:{
+    width:"100%",
+    // backgroundColor:"red",
+    paddingHorizontal:20,
+
+  },
+
+  BackBtn:{
+    height:60,
+    width:60,
+    // backgroundColor:"black",
   },
 
   BotSection:{
-    height:200,
+    height:250,
     justifyContent:"center",
     alignItems:"center",
     width:"100%",
@@ -214,13 +233,10 @@ const styles = StyleSheet.create({
       marginTop:20,
   },
 
-  ResultBox:{
-    height:50,
-    width:"100%",
-    borderRadius:5,
-    justifyContent:"center",
-    alignItems:"center",
-    backgroundColor:"#384558",
+  AnimationBox:{
+    // width:"100%",
+    height:180,
+    // backgroundColor:"whitesmoke",
   },
 
   ResultText:{
@@ -244,9 +260,11 @@ const styles = StyleSheet.create({
     backgroundColor:"#384558",
     borderRadius:5,
     flexDirection:"row",
+    marginTop:25,
     paddingHorizontal:30,
     justifyContent:"space-between",
-    alignItems:"center"
+    alignItems:"center",
+    // marginTop:70,
   },
 
   SlectBtn:{
